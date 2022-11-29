@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: mauibeach-android-ci-build
-          path: src/MauiBeach/bin/Release/net6.0-android/*Signed.a*
+          path: Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-android/*Signed.a*
 
 # MAUI Windows Build
   build-windows:
@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: mauibeach-windows-ci-build
-          path: Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/Maui_Github_Actions_KeyVault_Test*/\Maui_Github_Actions_KeyVault_Test*.msix
+          path: Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/Maui_Github_Actions_KeyVault_Test*/\Maui_Github_Actions_KeyVault_Test*.msix
 
 # MAUI iOS Build
   build-ios:
@@ -105,33 +105,5 @@ jobs:
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: mauibeach-ios-ci-build
-          path: Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-ios/iossimulator-x64/**/*.app
+          path: Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-ios/iossimulator-x64/**/*.app
 
-# MAUI MacCatalyst Build
-  build-mac:
-    runs-on: macos-12
-    name: MacCatalyst Build
-    steps:
-    
-      - name: Checkout
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
-
-      - name: Setup .NET 6
-        uses: actions/setup-dotnet@4d4a70f4a5b2a5a5329f13be4ac933f2c9206ac0
-        with:
-          dotnet-version: 6.0.x
-
-      - name: Install MAUI Workload
-        run: dotnet workload install maui --ignore-failed-sources
-
-      - name: Restore Dependencies
-        run: dotnet restore Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test.csproj
-
-      - name: Build MAUI MacCatalyst
-        run: dotnet publish Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test.csproj -c Release -f net6.0-maccatalyst --no-restore -p:BuildIpa=True
-
-      - name: Upload MacCatalyst Artifact
-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-        with:
-          name: mauibeach-macos-ci-build
-          path: Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-maccatalyst/maccatalyst-x64/publish/*.pkg
