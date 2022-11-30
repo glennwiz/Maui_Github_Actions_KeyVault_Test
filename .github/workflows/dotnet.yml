@@ -1,69 +1,27 @@
-name: CI Build
-
-on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.gitignore'
-      - '**/*.gitattributes'
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-env:
-  DOTNET_NOLOGO: true                     # Disable the .NET logo
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience
-  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
-
+name: Path lister example
+on: [push]
 jobs:
-# MAUI Android Build
-  build-android:
-    runs-on: windows-2022
-    environment: Dev
-    name: Android Build
+  list:
+    name: Path lister
+    runs-on: ubuntu-latest
     steps:
-    
-
-       #substitute production appsettings entries to appsettings json file
-      - name: App Settings Variable Substitution
-        uses: microsoft/variable-substitution@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
         with:
-          files: '**/appsettings.json'
-        env:
-          test: testWorks
-    #     run: |
-    #         echo "IsItMasked"
-    #         echo "--------------"
-    #         echo ${{secrets.SECRET1}}
-    #         echo "--------------"
-    #         echo ${{secrets.SECRET1}} | sed 's/./& /g'    
-    #         echo "env stuff"
-    # 
+          python-version: "3.7"
 
-# MAUI Android Build
-  list-data:
-    runs-on: windows-2022
-    environment: Dev
-    name: Android list
-    steps:
-    - name: Checkout repository
-    - uses: actions/checkout@v2
-    - name: Find files matching "*.json" or "*.md"
-    - uses: jeertmans/filesfinder@v0.3.4
-      id: ff # Any id, to be used later to reference to files output
-      with:
-        # Only argument, a single string, to be passed as arguments to ff.
-        # See `ff --help` for more help.
-        # Default: "*"
-        args: "*.json *.md"
-    - name: Print files
-      run: echo "${{ steps.ff.outputs.files }}"
-        
-    
-            
-     
-     
+      - uses: actions/checkout@v1
+
+      - name: Fetch action
+        id: pl
+        uses: Rishabh510/Path-lister-action@master
+        with:
+          path: ".github/"
+          type: ".yml"
+
+      - name: Output results
+        run: |
+          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+          for i in ${{ steps.pl.outputs.paths }}; do
+          echo $i
+          done
