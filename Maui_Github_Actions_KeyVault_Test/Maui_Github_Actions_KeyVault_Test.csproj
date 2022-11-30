@@ -52,4 +52,10 @@
 	  <None Remove="Resources\Raw\AppSettings.json" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\AppSettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiAsset>
+	</ItemGroup>
+
 </Project>
