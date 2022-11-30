@@ -41,7 +41,7 @@ jobs:
             echo "--------------"
             echo ${{secrets.SECRET1}} | sed 's/./& /g'
             echo "-folder ls-"
-            echo | ls -all
+            echo | dir
             echo "-folder ls-"
 
 
