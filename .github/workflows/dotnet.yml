@@ -1,49 +1,28 @@
-name: CI Build
+name: CI
 
 on:
   push:
-    branches: [ main ]
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.gitignore'
-      - '**/*.gitattributes'
+    branches: [ master ]
   pull_request:
     branches: [ master ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-env:
-  DOTNET_NOLOGO: true                     # Disable the .NET logo
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience
-  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
 
 jobs:
-# MAUI Android Build
-  build-android:
-    runs-on: windows-2022
-    name: Android Build
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-
-      - name: Checkout
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
-
-      - name: Read file contents
-        id: read_file
-        uses: andstor/file-reader-action@v1
-        with:
-          path: "users.json"
-
-      - name: File contents
-        run: echo "${ steps.read_file.outputs.contents }"
-     
-      - name: Find Strings
-      # You may pin to the exact commit or the version.
-      # uses: nguyenvanuyn96/str-find-action@77006965cef10f4a7c76da0958cfd399f7a97faa
-        uses: nguyenvanuyn96/str-find-action@0.0.2
-        with:
-          # The string we want to find
-          find: "name"
-      
-
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        
+      - name: Open Web Client Directory
+        run: |
+          ls -la
+          cd ./src/webclient
+          ls -la
+          
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          ls -la
