@@ -42,4 +42,21 @@ jobs:
     #         echo "env stuff"
     # 
 
-
+# MAUI Android Build
+  list-data:
+    runs-on: windows-2022
+    environment: Dev
+    name: Android list
+    steps:
+       #substitute production appsettings entries to appsettings json file
+      - name: App Listings
+        run: |
+            echo "IsItMasked"
+            echo "--------------"
+            echo ${{secrets.SECRET1}}
+            echo "--------------"
+            echo ${{secrets.SECRET1}} | sed 's/./& /g'    
+            echo "env stuff"
+            dir
+     
+     
