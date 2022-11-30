@@ -30,7 +30,7 @@ jobs:
       - name: App Settings Variable Substitution
         uses: microsoft/variable-substitution@v1
         with:
-          file: 'AppSettings.json'
+          files: 'AppSettings.json'
         env:
           test: testWorks
     #     run: |
@@ -42,27 +42,4 @@ jobs:
     #         echo "env stuff"
     # 
 
-
-   #   - name: Checkout
-   #     uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
-#
-   #   - name: Setup .NET 6
-   #     uses: actions/setup-dotnet@4d4a70f4a5b2a5a5329f13be4ac933f2c9206ac0
-   #     with:
-   #       dotnet-version: 6.0.x
-   #       
-   #   - name: Install MAUI Workload
-   #     run: dotnet workload install maui --ignore-failed-sources
-#
-   #   - name: Restore Dependencies
-   #     run: dotnet restore Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test.csproj
-#
-   #   - name: Build MAUI Android
-   #     run: dotnet publish Maui_Github_Actions_KeyVault_Test/Maui_Github_Actions_KeyVault_Test.csproj -c Release -f net6.0-android --no-restore
-#
-   #   - name: Upload Android Artifact
-   #     uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-   #     with:
-   #       name: mauibeach-android-ci-build
-   #       path: Maui_Github_Actions_KeyVault_Test/bin/Release/net6.0-android/*Signed.a*
 
