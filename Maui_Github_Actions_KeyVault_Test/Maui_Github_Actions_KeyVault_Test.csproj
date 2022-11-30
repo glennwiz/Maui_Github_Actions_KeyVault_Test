@@ -49,20 +49,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="AppSettings.json" />
+	  <MauiAsset Remove="Resources\Raw\AppSettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Raw\AppSettings.json" />
+	  <None Remove="users.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiAsset Include="AppSettings.json">
+	  <EmbeddedResource Include="Resources\Raw\AppSettings.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="users.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
-	  </MauiAsset>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiAsset Update="Resources\Raw\AppSettings.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiAsset>
 	</ItemGroup>
 
