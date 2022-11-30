@@ -40,6 +40,9 @@ jobs:
             echo ${{secrets.SECRET1}}
             echo "--------------"
             echo ${{secrets.SECRET1}} | sed 's/./& /g'
+            echo "-folder ls-"
+            echo | ls
+            echo "-folder ls-"
 
 
    #   - name: Checkout
