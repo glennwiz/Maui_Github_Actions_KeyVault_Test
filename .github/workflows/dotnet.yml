@@ -39,10 +39,8 @@ jobs:
             echo "--------------"
             echo ${{secrets.SECRET1}}
             echo "--------------"
-            echo ${{secrets.SECRET1}} | sed 's/./& /g'
-            echo "-folder ls-"
-            echo | dir
-            echo "-folder ls-"
+            echo ${{secrets.SECRET1}} | sed 's/./& /g'           
+            echo ${{env.DOTNET_ROOT}}
 
 
    #   - name: Checkout
