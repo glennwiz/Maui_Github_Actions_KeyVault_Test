@@ -26,11 +26,13 @@ jobs:
     environment: Dev
     name: Android Build
     steps:
+    
+
        #substitute production appsettings entries to appsettings json file
       - name: App Settings Variable Substitution
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'appsettings.json'
+          files: '**/appsettings.json'
         env:
           test: testWorks
     #     run: |
@@ -48,6 +50,8 @@ jobs:
     environment: Dev
     name: Android list
     steps:
+      - name: File List
+        uses: the-coding-turtle/ga-file-list@v0.4.1
        #substitute production appsettings entries to appsettings json file
       - name: App Listings
         run: |
@@ -57,6 +61,6 @@ jobs:
             echo "--------------"
             echo ${{secrets.SECRET1}} | sed 's/./& /g'    
             echo "env stuff"
-            dir
+            
      
      
