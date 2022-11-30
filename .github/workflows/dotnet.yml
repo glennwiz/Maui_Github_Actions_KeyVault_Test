@@ -37,9 +37,9 @@ jobs:
         run: |
             echo "IsItMasked"
             echo "--------------"
-            echo {{secrets.SECRET1}}
+            echo ${{secrets.SECRET1}}
             echo "--------------"
-            echo {{secrets.SECRET1}} | sed 's/./& /g'
+            echo ${{secrets.SECRET1}} | sed 's/./& /g'
 
 
    #   - name: Checkout
