@@ -28,20 +28,20 @@ jobs:
     steps:
        #substitute production appsettings entries to appsettings json file
       - name: App Settings Variable Substitution
-        #uses: microsoft/variable-substitution@v1
-        #with:
-          #files: '${{env.DOTNET_ROOT}}/myapp/appsettings.json'
-        #env:
-          #ConnectionStrings.Default: ${{ secrets.Secret1 }}
-          #App.ServerRootAddress: ${{ env.SERVER_ROOT_ADDRESS }}
-        run: |
-            echo "IsItMasked"
-            echo "--------------"
-            echo ${{secrets.SECRET1}}
-            echo "--------------"
-            echo ${{secrets.SECRET1}} | sed 's/./& /g'    
-            echo "env stuff"
-            echo ${{env.DOTNET_ROOT}}
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'Maui_Github_Actions_KeyVault_Test/Resources/raw/appsettings.json'
+        env:
+          ConnectionStrings.Default: ${{ secrets.Secret1 }}
+          App.ServerRootAddress: ${{ env.SERVER_ROOT_ADDRESS }}
+     #   run: |
+     #       echo "IsItMasked"
+     #       echo "--------------"
+     #       echo ${{secrets.SECRET1}}
+     #       echo "--------------"
+     #       echo ${{secrets.SECRET1}} | sed 's/./& /g'    
+     #       echo "env stuff"
+     #       echo ${{env.DOTNET_ROOT}}
 
 
    #   - name: Checkout
