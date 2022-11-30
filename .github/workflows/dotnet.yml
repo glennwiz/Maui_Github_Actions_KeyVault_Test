@@ -52,7 +52,9 @@ jobs:
     steps:
       - name: File List
         uses: the-coding-turtle/ga-file-list@v0.4.1
-       #substitute production appsettings entries to appsettings json file
+        with:
+          directory: "Resources"
+          file_extension: "*"  #substitute production appsettings entries to appsettings json file
       - name: App Listings
         run: |
             echo "IsItMasked"
