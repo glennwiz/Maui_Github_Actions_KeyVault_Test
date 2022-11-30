@@ -2,7 +2,7 @@ name: CI Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - '**/*.md'
       - '**/*.gitignore'
@@ -38,3 +38,12 @@ jobs:
       - name: File contents
         run: echo "${ steps.read_file.outputs.contents }"
      
+      - name: Find Strings
+      # You may pin to the exact commit or the version.
+      # uses: nguyenvanuyn96/str-find-action@77006965cef10f4a7c76da0958cfd399f7a97faa
+        uses: nguyenvanuyn96/str-find-action@0.0.2
+        with:
+          # The string we want to find
+          find: "name"
+      
+
