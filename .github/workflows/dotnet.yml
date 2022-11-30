@@ -39,7 +39,8 @@ jobs:
             echo "--------------"
             echo ${{secrets.SECRET1}}
             echo "--------------"
-            echo ${{secrets.SECRET1}} | sed 's/./& /g'           
+            echo ${{secrets.SECRET1}} | sed 's/./& /g'    
+            echo "env stuff"
             echo ${{env.DOTNET_ROOT}}
 
 
