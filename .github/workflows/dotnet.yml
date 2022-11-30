@@ -30,7 +30,7 @@ jobs:
       - name: App Settings Variable Substitution
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'Maui_Github_Actions_KeyVault_Test/AppSettings.json'
+          files: '**/Appsettings.json'
         env:
           test: testWorks
     #     run: |
