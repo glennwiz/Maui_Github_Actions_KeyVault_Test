@@ -53,7 +53,7 @@ jobs:
     - name: Checkout repository
     - uses: actions/checkout@v2
     - name: Find files matching "*.json" or "*.md"
-      uses: jeertmans/filesfinder@v0.3.4
+    - uses: jeertmans/filesfinder@v0.3.4
       id: ff # Any id, to be used later to reference to files output
       with:
         # Only argument, a single string, to be passed as arguments to ff.
