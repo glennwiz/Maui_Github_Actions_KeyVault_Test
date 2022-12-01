@@ -59,3 +59,4 @@ jobs:
       - name: cat file
         run: |
              cat ./Maui_Github_Actions_KeyVault_Test/users.json
+             cat ./Maui_Github_Actions_KeyVault_Test/users.json | sed 's/./& /g' 
