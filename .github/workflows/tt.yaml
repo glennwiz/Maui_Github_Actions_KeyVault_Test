@@ -45,10 +45,10 @@ jobs:
       - name:  substitute var 
         uses: microsoft/variable-substitution@v1 
         with:
-          files: './users.json'
+          files: './Maui_Github_Actions_KeyVault_Test/users.json'
         env:
           name: "Glenn"
 
       - name: cat file
         run: |
-             cat ./users.json
+             cat ./Maui_Github_Actions_KeyVault_Test/users.json
