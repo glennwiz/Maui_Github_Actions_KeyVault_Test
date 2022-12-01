@@ -41,6 +41,13 @@ jobs:
           cd ./Maui_Github_Actions_KeyVault_Test
           dir
 
+      - uses: microsoft/variable-substitution@v1 
+        with:
+          files: 'users.json'
+        env:
+          name: "Glenn"
+
+
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
 
