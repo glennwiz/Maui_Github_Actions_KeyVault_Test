@@ -29,7 +29,11 @@ jobs:
           cd ./Maui_Github_Actions_KeyVault_Test
           dir
           cat ./users.json
-          echo "IsItMasked"
+          cd Resources
+          dir
+          cd Raw
+          dir        
+          echo "Secret test IsItMasked?"
           echo "--------------"
           echo ${{secrets.SECRET1}}
           echo "--------------"
