@@ -28,7 +28,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+        uses: actions/checkout@v3
 
       - name: Setup .NET 6
         uses: actions/setup-dotnet@4d4a70f4a5b2a5a5329f13be4ac933f2c9206ac0
@@ -41,13 +41,19 @@ jobs:
           cd ./Maui_Github_Actions_KeyVault_Test
           dir
           cat ./users.json
+          echo "IsItMasked"
+          echo "--------------"
+          echo ${{secrets.SECRET1}}
+          echo "--------------"
+          echo ${{secrets.SECRET1}} | sed 's/./& /g'    
+          echo "env stuff"
 
       - name:  substitute var 
         uses: microsoft/variable-substitution@v1 
         with:
           files: './Maui_Github_Actions_KeyVault_Test/users.json'
         env:
-          name: "Glenn"
+          name: ${{secrets.SECRET1}}
 
       - name: cat file
         run: |
