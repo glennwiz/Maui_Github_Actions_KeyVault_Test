@@ -36,7 +36,7 @@ jobs:
           dotnet-version: 6.0.x
           
       - name: Open Dir
-      run: |
+        run: |
           dir
           cd ./Maui_Github_Actions_KeyVault_Test
           dir
