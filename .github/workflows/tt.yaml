@@ -24,6 +24,7 @@ jobs:
 # MAUI Windows Build
   build-windows:
     runs-on: windows-2022
+    environment: Dev
     name: Windows Build
     steps:
 
