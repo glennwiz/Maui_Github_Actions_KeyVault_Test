@@ -12,11 +12,11 @@ jobs:
     - name: Open Dir
       run: |
           dir
-          cd ./Maui_Github_Actions_KeyVault_Te
+          cd ./Maui_Github_Actions_KeyVault_Test
           dir
           
     - name: Run a multi-line script
       run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          ls -la
+          dir
